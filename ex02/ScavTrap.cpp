@@ -1,8 +1,8 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 {
-	std::cout << "ScavTrap: "<< name << " constructing" << std::endl;
+	std::cout << "ScavTrap: " << name << " constructing" << std::endl;
 	setHitPoints(100);
 	setEnergyPoints(50);
 	setAttackDamage(20);
@@ -34,9 +34,15 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& t)
 
 void	ScavTrap::attack(const std::string &target)
 {
-	std::cout << "ScavTrap: " << getName() << " attacks " << target
-		<< ", causing " << getAttackDamage() << " points of damage!"
-		<< std::endl;
+	if (getHitPoints() > 0 && getEnergyPoints() > 0)
+	{
+		setEnergyPoints(getEnergyPoints() - 1);
+		std::cout << "ScavTrap: " << getName() << " attacks " << target
+			<< ", causing " << getAttackDamage() << " points of damage!"
+			<< std::endl;
+	}
+	else
+		std::cout << "ScavTrap: " << getName() << " out of energy or hp" << std::endl;
 }
 
 void	ScavTrap::guardGate()

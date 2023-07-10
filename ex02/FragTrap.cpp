@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 {
 	std::cout << "FragTrap: "<< name << " constructing" << std::endl;
 	setHitPoints(100);
@@ -34,9 +34,16 @@ FragTrap& FragTrap::operator=(const FragTrap& t)
 
 void	FragTrap::attack(const std::string &target)
 {
-	std::cout << "FragTrap: " << getName() << " attacks " << target
-		<< ", causing " << getAttackDamage() << " points of damage!"
-		<< std::endl;
+	if (getHitPoints() > 0 && getEnergyPoints() > 0)
+	{
+		setEnergyPoints(getEnergyPoints() - 1);
+		std::cout << "FragTrap: " << getName() << " attacks " << target
+			<< ", causing " << getAttackDamage() << " points of damage!"
+			<< std::endl;
+	}
+	else
+		std::cout << "ScavTrap: " << getName() << " out of energy or hp" << std::endl;
+
 }
 
 void	FragTrap::highFivesGuys(void)
