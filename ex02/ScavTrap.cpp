@@ -1,5 +1,13 @@
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap() : ClapTrap()
+{
+	std::cout << "ScavTrap: " << " constructing" << std::endl;
+	setHitPoints(100);
+	setEnergyPoints(50);
+	setAttackDamage(20);
+}
+
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 {
 	std::cout << "ScavTrap: " << name << " constructing" << std::endl;

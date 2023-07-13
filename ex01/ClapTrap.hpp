@@ -10,6 +10,7 @@ private:
 	unsigned int	energyPoints;
 	unsigned int	attackDamage;
 public:
+	ClapTrap();
 	ClapTrap(const std::string &name);
 	ClapTrap(ClapTrap &t);
 	~ClapTrap();
@@ -17,10 +18,10 @@ public:
 	void	attack(const std::string &target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
-	std::string		getName() const;
-	unsigned int	getHitPoints() const;
-	unsigned int	getEnergyPoints() const;
-	unsigned int	getAttackDamage() const;
+	const std::string	&getName() const;
+	unsigned int		getHitPoints() const;
+	unsigned int		getEnergyPoints() const;
+	unsigned int		getAttackDamage() const;
 	void	setName(const std::string &name);
 	void	setHitPoints(unsigned int amount);
 	void	setEnergyPoints(unsigned int amount);

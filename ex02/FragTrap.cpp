@@ -1,13 +1,20 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
+FragTrap::FragTrap() : ClapTrap()
 {
-	std::cout << "FragTrap: "<< name << " constructing" << std::endl;
+	std::cout << "FragTrap: " << " constructing" << std::endl;
 	setHitPoints(100);
 	setEnergyPoints(100);
 	setAttackDamage(30);
 }
 
+FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
+{
+	std::cout << "FragTrap: " << name << " constructing" << std::endl;
+	setHitPoints(100);
+	setEnergyPoints(100);
+	setAttackDamage(30);
+}
 
 FragTrap::FragTrap(FragTrap &t) : ClapTrap(t.getName())
 {

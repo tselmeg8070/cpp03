@@ -10,6 +10,7 @@ private:
 	unsigned int	energyPoints;
 	unsigned int	attackDamage;
 public:
+	ClapTrap();
 	ClapTrap(const std::string &name);
 	ClapTrap(ClapTrap &t);
 	~ClapTrap();

@@ -1,26 +1,25 @@
-NAME = claptrap
-CC = g++
-FLAGS = -Wall -Wextra -Werror
-VFLAGS = -std=c++98 -fsanitize=address
-FILES = ClapTrap \
-		ScavTrap \
-		FragTrap \
-		main
+NAME = run
+CXX = c++
+CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -std=c++98
+SRCS = 	ClapTrap.cpp \
+		ScavTrap.cpp \
+		FragTrap.cpp \
+		main.cpp
 
 INCLS = ClapTrap.hpp \
 		FragTrap.hpp \
 		ScavTrap.hpp
 
-SRCS = $(addsuffix .cpp, $(FILES))
-OBJS = $(addsuffix .o, $(FILES))
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(VFLAGS) -o $(NAME) $^
+	$(CXX) -o $(NAME) $^
 
-.cpp.o: $(SRCS) $(INCLS)
-	$(CC) $(FLAGS) $(VFLAGS) -c -o $@ $<
+%.o : %.cpp $(SRCS) $(INCLS)
+	$(CXX) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 clean:
 	rm -f $(OBJS)
